@@ -51,4 +51,27 @@ const getVal = <T extends object,K extends keyof T>(obj:T,key:K) =>{
   return obj[key]
 }
 getVal({a:1,b:2},'a')
-export{}
+
+
+
+type getArr<T1 extends number,U extends any[]= []> = U["length"] extends T1 ? U : getArr<T1,[...U,any]>
+
+type Add<T1 extends number,T2 extends number> = [
+  ...getArr<T1>,
+  ...getArr<T2>,
+]
+
+type a = Add<3,2>
+
+
+
+
+
+
+
+
+
+
+
+
+
